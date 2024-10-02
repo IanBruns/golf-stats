@@ -1,4 +1,6 @@
 {
   "extends": "next/core-web-vitals",
-  "semi": "never"
+  "rules": {
+      "semi": 0
+  }
 }
