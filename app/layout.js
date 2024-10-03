@@ -11,7 +11,7 @@ export default function Layout({ children }) {
             <Link href="/">Home</Link>
             <Link href="/courses">Courses</Link>
           </nav>
-          {children}
+          <section>{children}</section>
         </main>
       </body>
     </html>
