@@ -2,9 +2,11 @@
 
 import { useState } from "react"
 
+import { postCourse } from "./api"
+
 export default function CreateEvent() {
   const [creating, setCreating] = useState(false)
-  const [title, setTitle] = useState("")
+  const [matchName, setMatchName] = useState("")
 
   const handleCreate = () => {
     setCreating(true)
@@ -15,17 +17,24 @@ export default function CreateEvent() {
   }
 
   const handleTitleChange = e => {
-    setTitle(e.target.value)
+    setMatchName(e.target.value)
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    await postCourse({ matchName })
+    setMatchName("")
+    setCreating(false)
   }
 
   return (
     <>
       {creating ? (
         <>
-          <form>
-            <label htmlFor="name">Name</label>
-            <input id="name" onChange={handleTitleChange} value={title} />
-            <button disabled={!title.length}>submit</button>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Match Name</label>
+            <input id="name" onChange={handleTitleChange} value={matchName} />
+            <input type="submit" value="Submit" disabled={!matchName.length} />
           </form>
           <button onClick={handleCancel}>Never mind</button>
         </>
