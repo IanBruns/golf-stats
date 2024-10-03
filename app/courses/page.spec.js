@@ -25,6 +25,14 @@ jest.mock("./api", () => ({
   postCourse: jest.fn(() => Promise.resolve(200)),
 }))
 
+jest.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      refresh: () => null,
+    }
+  },
+}))
+
 describe("CoursesRoute", () => {
   let render
 

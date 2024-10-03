@@ -1,12 +1,15 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 import { postCourse } from "./api"
 
 export default function CreateEvent() {
   const [creating, setCreating] = useState(false)
   const [matchName, setMatchName] = useState("")
+
+  const router = useRouter()
 
   const handleCreate = () => {
     setCreating(true)
@@ -25,6 +28,8 @@ export default function CreateEvent() {
     await postCourse({ matchName })
     setMatchName("")
     setCreating(false)
+
+    router.refresh()
   }
 
   return (
