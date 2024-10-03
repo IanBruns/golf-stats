@@ -13,4 +13,6 @@
   align-items: center;
   flex-direction: column;
   padding: 10px;
+  min-width: 140px;
+  margin: 5px;
 }
